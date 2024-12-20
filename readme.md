@@ -1,6 +1,7 @@
 ### 启动命令
 - 1.启动前端代码 npm run start:frontend
 - 2.启动后端代码 npm run  start:backend
+- 3.整体启动 npm run start
 
 ### 功能开发过程中考虑到几点
 - 1.前端获取数据过程 考虑了 加载中 加载失败 两个场景的兼容
