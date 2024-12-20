@@ -53,7 +53,7 @@ const App: React.FC = () => {
         <div >
             {/* 数据加载正确显示完整数据 */}
             {!loading && error.length === 0 && <>
-                <input placeholder='please input name or symbol to search' style={{ height: 30, marginBottom: '1vw', width: '50vw' }} autoComplete='true' value={searchTerm}
+                <input placeholder='please input name or symbol to search' style={{ height: 30, marginBottom: '1vw', width: '70vw' }} autoComplete='true' value={searchTerm}
                     onChange={(e) => {
                         handleSearch(e)
                     }} />
