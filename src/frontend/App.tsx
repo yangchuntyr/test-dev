@@ -8,7 +8,8 @@ const App: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
-    const apiUrl = 'http://localhost:3001/api/crypto'
+    console.log('环境变量',process.env.NODE_ENV)
+    const apiUrl = process.env.NODE_ENV === 'production'?'/api/crypto':'http://localhost:3001/api/crypto'
     useEffect(() => {
         const fetchData = async () => {
             try {

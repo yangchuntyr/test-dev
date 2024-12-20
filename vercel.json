@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "./src/backend/server.ts",
+            "use": "@vercel/typescript-builder"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/crypto",
+          
+            "dest": "/api/crypto"
+        },
+        {
+            "src": "/(.*)",
+          
+            "dest": "/index"
+        }
+    ]
+}

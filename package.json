@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:backend": "ts-node src/backend/server.ts",
     "start:frontend": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "start":"npm run build && ts-node src/backend/server.ts  production"
+
     
   },
   "keywords": [],

@@ -33,18 +33,13 @@ let isFinish=true;
       return;
     }
     // 如果不在节流时间内，则立即执行函数
-    func(...args);
+   
     lastFunc = Date.now();
     inThrottle = true;
+  return  func(...args);
   }
 
   return wrapper;
 }
 
 export { throttle }
-// 使用示例
-const myFunction = throttle((message: string) => {
-  console.log(message);
-}, 2000);
-
-myFunction('Hello'); // 每2秒最多执行一次

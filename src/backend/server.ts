@@ -1,11 +1,20 @@
 import express from 'express';
 import axios from 'axios';
 import cors from 'cors'; // 引入cors中间件
+import path from 'path'
 import { throttle } from './util'
+process.argv
+console.log('命令行参数',process.argv, process.env.npm_config_aaa)
 const app = express();
 // 使用cors中间件，允许所有来源的跨域请求，这在开发阶段比较方便，但在生产环境可能需要更严格限制来源
 app.use(cors());
 const port = 3001; // 端口号
+if(process.argv[2]==='production'){
+    const staticPath = path.resolve(__dirname, '../../', 'build');
+    app.use('/index',express.static(staticPath));
+    app.use('/',express.static(staticPath));
+    console.log('静态资源目录',staticPath)
+}
 
 // 用于从CoinGecko API获取加密货币数据
 const getCryptoData = async () => {
@@ -47,6 +56,7 @@ const getCryptoDataFun = (() => {
 
     }
 })()
+
 app.get('/api/crypto', async (req, res) => {
     getCryptoDataFun().then((data) => {
         res.json(data||[])
@@ -59,3 +69,5 @@ app.get('/api/crypto', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+module.exports = app
